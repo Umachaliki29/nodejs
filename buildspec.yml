@@ -2,28 +2,33 @@ version: 0.2
 
 env:
   variables:
-    IMAGE_REPO_NAME: "sample"
-    IMAGE_TAG: "latest"
-    AWS_REGION: "eu-central-1"
-    ACCOUNT_ID: "190168171128"  # change this to your region
+    IMAGE_REPO_NAME: "sample"              # Name of your ECR repo
+    IMAGE_TAG: "latest"                    # Tag for the image
+    AWS_REGION: "eu-central-1"             # Your AWS region
+    ACCOUNT_ID: "190168171128"             # Your AWS account ID
+
 phases:
   pre_build:
     commands:
       - echo "Logging in to Amazon ECR..."
       - aws --version
-      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+      - aws ecr get-login-password --region $AWS_REGION |
+        docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
       - REPOSITORY_URI=${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
-      - echo "Build starting on `date`"
+      - echo "Build starting on $(date)"
+
   build:
     commands:
       - echo "Building the Docker image..."
       - docker build -t $IMAGE_REPO_NAME .
       - docker tag $IMAGE_REPO_NAME:latest $REPOSITORY_URI:$IMAGE_TAG
+
   post_build:
     commands:
-      - echo "Pushing the Docker image to ECR..."
+      - echo "Pushing the Docker image to Amazon ECR..."
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo "Build completed on `date`"
+      - echo "Build completed on $(date)"
+
 artifacts:
   files:
     - '**/*'
