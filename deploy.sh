@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Variables - update these accordingly
-GITHUB_RAW_URL="https://raw.githubusercontent.com/<username>/<repo>/main/docker-compose.yml"
+GITHUB_RAW_URL="https://github.com/Umachaliki29/nodejs/blob/main/Dockercompose.yml"
+
 AWS_REGION="eu-central-1"
 AWS_ACCOUNT_ID="190168171128"
 STACK_NAME="nodeapp-stack"
