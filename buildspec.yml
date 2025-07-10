@@ -4,13 +4,14 @@ env:
   variables:
     IMAGE_REPO_NAME: "sample"
     IMAGE_TAG: "latest"
-    AWS_REGION: "eu-central-1"  # change this to your region
+    AWS_REGION: "eu-central-1"
+    ACCOUNT_ID: "190168171128"  # change this to your region
 phases:
   pre_build:
     commands:
       - echo "Logging in to Amazon ECR..."
       - aws --version
-      - $(aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com)
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
       - REPOSITORY_URI=${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
       - echo "Build starting on `date`"
   build:
