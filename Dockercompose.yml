@@ -1,9 +1,7 @@
 version: '3.8'
-
 services:
   web:
-    image: <account-id>.dkr.ecr.<region>.amazonaws.com/<repository-name>:<tag>
- # Placeholder; will replace in deploy step
+    image: 190168171128.dkr.ecr.eu-central-1.amazonaws.com/sample:latest
     ports:
       - "80:80"
     deploy:
