@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    image: <REPLACE_ME> # Replaced dynamically in deploy.sh
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
