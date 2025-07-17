@@ -3,8 +3,8 @@
 # Variables - update these accordingly
 GITHUB_RAW_URL="https://github.com/Umachaliki29/nodejs/blob/main/Dockercompose.yml"
 
-AWS_REGION="eu-central-1"
-AWS_ACCOUNT_ID="190168171128"
+AWS_REGION="us-east-1"
+AWS_ACCOUNT_ID="471112907169"
 STACK_NAME="nodeapp-stack"
 
 echo "Step 1: Downloading latest docker-compose.yml from GitHub..."
