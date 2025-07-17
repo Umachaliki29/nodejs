@@ -4,8 +4,8 @@ env:
   variables:
     IMAGE_REPO_NAME: "sample"              # Name of your ECR repo
     IMAGE_TAG: "latest"                    # Tag for the image
-    AWS_REGION: "eu-central-1"             # Your AWS region
-    ACCOUNT_ID: "190168171128"             # Your AWS account ID
+    AWS_REGION: "us-east-1"             # Your AWS region
+    ACCOUNT_ID: "471112907169"             # Your AWS account ID
 
 phases:
   pre_build:
