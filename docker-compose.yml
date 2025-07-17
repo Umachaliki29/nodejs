@@ -1,10 +1,15 @@
-version: '3.8'
+version: "3.8"
+
 services:
-  web:
-    image: 190168171128.dkr.ecr.eu-central-1.amazonaws.com/sample:latest
+  node-service:
+    image: 471112907169.dkr.ecr.us-east-1.amazonaws.com/node-base:latest
     ports:
-      - "80:80"
+      - "8080:80"
     deploy:
       replicas: 2
-      restart_policy:
-        condition: on-failure
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: overlay
